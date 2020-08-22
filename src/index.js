@@ -1,13 +1,13 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import TextStyled from './components/TextStyled';
+import Home from './screens/Home';
+import {SafeAreaView, StatusBar} from 'react-native';
 
 const Index = () => {
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <TextStyled h1>Hello Word</TextStyled>
-      <TextStyled>Hello Word</TextStyled>
-    </View>
+    <>
+      <StatusBar barStyle="dark-content" />
+      <Home />
+    </>
   );
 };
 
