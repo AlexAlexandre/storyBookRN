@@ -1,6 +1,7 @@
 import React from 'react';
+import {StatusBar} from 'react-native';
+import 'react-native-gesture-handler';
 import Home from './screens/Home';
-import {SafeAreaView, StatusBar} from 'react-native';
 
 const Index = () => {
   return (

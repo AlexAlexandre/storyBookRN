@@ -1,16 +1,24 @@
 import React from 'react';
-import {View, ScrollView, FlatList} from 'react-native';
+import {ScrollView, FlatList} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
 import TextStyled from '~/components/TextStyled';
 import ListItem from '~/components/ListItem';
-import {Container} from './styles';
+import {Container, FromContainer} from './styles';
 
-const Home = () => {
+import ButtonsScreen from '../Buttons';
+const Stack = createStackNavigator();
+
+const HomeScreen = ({navigation}) => {
   const menuList = [
     {
       id: '1',
       title: 'Botões',
       iconRight: 'default',
+      onPress: () => {
+        navigation.navigate('ButtonsScreen');
+      },
     },
     {
       id: '2',
@@ -45,9 +53,30 @@ const Home = () => {
           renderItem={({item}) => <ListItem data={item} />}
           keyExtractor={(item) => item.id}
         />
+
+        <FromContainer>
+          <TextStyled semibold light>
+            from
+          </TextStyled>
+          <TextStyled caption light>
+            LEX-TEC
+          </TextStyled>
+          <TextStyled semibold light style={{marginTop: 10}}>
+            V 0.0.1
+          </TextStyled>
+        </FromContainer>
       </ScrollView>
     </Container>
   );
 };
 
-export default Home;
+export default function Home() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="HomeScreen" headerMode="none">
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="ButtonsScreen" component={ButtonsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
