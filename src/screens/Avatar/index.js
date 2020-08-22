@@ -3,7 +3,7 @@ import React from 'react';
 import {Container} from './styles';
 import Header from '../Header';
 
-const Avatar = ({navigation}) => {
+const AvatarScreen = ({navigation}) => {
   return (
     <Container>
       <Header navigation={navigation} route="HomeScreen" title="Avatar" />
@@ -11,4 +11,4 @@ const Avatar = ({navigation}) => {
   );
 };
 
-export default Avatar;
+export default AvatarScreen;
