@@ -8,6 +8,8 @@ import ListItem from '~/components/ListItem';
 import {Container, FromContainer} from './styles';
 
 import ButtonsScreen from '../Buttons';
+import AvatarScreen from '../Avatar';
+
 const Stack = createStackNavigator();
 
 const HomeScreen = ({navigation}) => {
@@ -24,6 +26,9 @@ const HomeScreen = ({navigation}) => {
       id: '2',
       title: 'Avatar',
       iconRight: 'default',
+      onPress: () => {
+        navigation.navigate('AvatarScreen');
+      },
     },
     {
       id: '3',
@@ -76,6 +81,7 @@ export default function Home() {
       <Stack.Navigator initialRouteName="HomeScreen" headerMode="none">
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="ButtonsScreen" component={ButtonsScreen} />
+        <Stack.Screen name="AvatarScreen" component={AvatarScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -2,12 +2,13 @@ import React from 'react';
 
 import {Container} from './styles';
 import Header from '../Header';
-const Buttons = ({navigation}) => {
+
+const Avatar = ({navigation}) => {
   return (
     <Container>
-      <Header navigation={navigation} route="HomeScreen" title="Botões" />
+      <Header navigation={navigation} route="HomeScreen" title="Avatar" />
     </Container>
   );
 };
 
-export default Buttons;
+export default Avatar;
