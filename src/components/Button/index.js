@@ -2,9 +2,7 @@ import React from 'react';
 import {ActivityIndicator, TouchableOpacity, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 
-import TextStyled from '../TextStyled';
 import * as theme from '~/theme';
-import Icon from '../Icon';
 
 const Button = ({loading, ...rest}) => {
   const {
@@ -16,8 +14,6 @@ const Button = ({loading, ...rest}) => {
     icon,
     iconLeft,
     iconRight,
-    iconSize,
-    iconColor,
     children,
     style,
   } = rest;
@@ -37,29 +33,13 @@ const Button = ({loading, ...rest}) => {
         <ActivityIndicator size="small" color="#E3F2FD" />
       ) : (
         <>
-          {iconLeft && (
-            <Icon
-              name={iconLeft}
-              size={iconSize}
-              color={iconColor}
-              style={{marginRight: 10}}
-            />
-          )}
+          {iconLeft && icon}
 
-          {fab && (
-            <Icon name={icon} size={iconSize} color={theme.colors.white} />
-          )}
+          {!children && icon}
 
-          {(!fab, !icon && children)}
+          {children}
 
-          {iconRight && (
-            <Icon
-              name={iconRight}
-              size={iconSize}
-              color={iconColor}
-              style={{marginLeft: 10}}
-            />
-          )}
+          {iconRight && icon}
         </>
       )}
     </TouchableOpacity>
@@ -107,11 +87,9 @@ Button.prototype = {
   text: PropTypes.bool,
   rounded: PropTypes.bool,
   fab: PropTypes.bool,
-  icon: PropTypes.bool,
-  iconLeft: PropTypes.string,
-  iconRight: PropTypes.string,
-  iconSize: PropTypes.number,
-  iconColor: PropTypes.string,
+  icon: PropTypes.object,
+  iconLeft: PropTypes.bool,
+  iconRight: PropTypes.bool,
 };
 
 Button.defaultProps = {

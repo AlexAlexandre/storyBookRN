@@ -26,7 +26,7 @@ const ButtonsScreen = ({navigation}) => {
         </Button>
 
         <Button rounded solid>
-          <TextStyled>Botão com borda</TextStyled>
+          <TextStyled white>Botão com borda</TextStyled>
         </Button>
 
         <Button rounded outline>
@@ -39,21 +39,57 @@ const ButtonsScreen = ({navigation}) => {
 
         <Button
           outline
-          iconLeft="thumb-up-outline"
-          iconSize={28}
-          iconColor={theme.colors.primary}>
+          iconLeft
+          icon={
+            <Icon
+              name="thumb-up-outline"
+              size={28}
+              color={theme.colors.primary}
+              style={{marginRight: 8}}
+            />
+          }>
           <TextStyled>Icone na esquerda</TextStyled>
         </Button>
 
         <Button
-          outline
-          iconRight="thumb-up-outline"
-          iconSize={28}
-          iconColor={theme.colors.primary}>
-          <TextStyled>Icone na direita</TextStyled>
+          solid
+          iconRight
+          icon={
+            <Icon
+              name="thumb-up-outline"
+              size={28}
+              color={theme.colors.white}
+              style={{marginLeft: 8}}
+            />
+          }>
+          <TextStyled white>Icone na direita</TextStyled>
         </Button>
 
-        <Button fab icon="account-outline" iconSize={40} />
+        <View
+          style={{
+            width: '100%',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            marginTop: 10,
+          }}>
+          <Button
+            fab
+            icon={
+              <Icon
+                name="account-outline"
+                size={40}
+                color={theme.colors.white}
+              />
+            }
+          />
+
+          <Button
+            icon={
+              <Icon name="account" size={40} color={theme.colors.primary} />
+            }
+          />
+        </View>
       </View>
     </Container>
   );
