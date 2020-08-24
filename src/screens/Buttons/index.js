@@ -20,6 +20,24 @@ const ButtonsScreen = ({navigation}) => {
         <Button title="Botão com borda" rounded solid />
         <Button title="Botão com borda" rounded outline />
         <Button title="Botão text" text />
+
+        <Button
+          title="Icone na esquerda"
+          outline
+          iconLeft="thumb-up-outline"
+          iconSize={28}
+          iconColor={theme.colors.primary}
+        />
+
+        <Button
+          title="Icone na direita"
+          outline
+          iconRight="thumb-up-outline"
+          iconSize={28}
+          iconColor={theme.colors.primary}
+        />
+
+        <Button fab icon="account-outline" iconSize={40} />
       </View>
     </Container>
   );

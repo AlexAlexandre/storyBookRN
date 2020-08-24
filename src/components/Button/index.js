@@ -4,24 +4,62 @@ import PropTypes from 'prop-types';
 
 import TextStyled from '../TextStyled';
 import * as theme from '~/theme';
+import Icon from '../Icon';
 
 const Button = ({loading, title, ...rest}) => {
-  const {solid, outline, text, rounded, style} = rest;
+  const {
+    solid,
+    outline,
+    text,
+    rounded,
+    fab,
+    icon,
+    iconLeft,
+    iconRight,
+    iconSize,
+    iconColor,
+    style,
+  } = rest;
 
   const buttonStyles = [
-    solid && styles.solid,
-    outline && styles.outline,
-    text && styles.text,
-    rounded && styles.rounded,
+    solid && [styles.container, styles.solid],
+    outline && [styles.container, styles.outline],
+    text && [styles.container, styles.text],
+    rounded && [styles.container, styles.rounded],
+    fab && [styles.fab],
     style,
   ];
 
   return (
-    <TouchableOpacity style={[styles.container, buttonStyles]}>
+    <TouchableOpacity style={buttonStyles}>
       {loading ? (
-        <ActivityIndicator size="small" color="#fff" />
+        <ActivityIndicator size="small" color="#E3F2FD" />
       ) : (
-        <TextStyled>{title}</TextStyled>
+        <>
+          {iconLeft && (
+            <Icon
+              name={iconLeft}
+              size={iconSize}
+              color={iconColor}
+              style={{marginRight: 10}}
+            />
+          )}
+
+          {fab && (
+            <Icon name={icon} size={iconSize} color={theme.colors.white} />
+          )}
+
+          {(!fab, !icon && <TextStyled>{title}</TextStyled>)}
+
+          {iconRight && (
+            <Icon
+              name={iconRight}
+              size={iconSize}
+              color={iconColor}
+              style={{marginLeft: 10}}
+            />
+          )}
+        </>
       )}
     </TouchableOpacity>
   );
@@ -31,6 +69,7 @@ const styles = StyleSheet.create({
   container: {
     width: '90%',
     height: 46,
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     margin: 10,
@@ -49,6 +88,14 @@ const styles = StyleSheet.create({
   rounded: {
     borderRadius: 30,
   },
+  fab: {
+    backgroundColor: theme.colors.primary,
+    borderRadius: 30,
+    height: 46,
+    width: 46,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 Button.prototype = {
@@ -58,6 +105,12 @@ Button.prototype = {
   solid: PropTypes.bool,
   text: PropTypes.bool,
   rounded: PropTypes.bool,
+  fab: PropTypes.bool,
+  icon: PropTypes.bool,
+  iconLeft: PropTypes.string,
+  iconRight: PropTypes.string,
+  iconSize: PropTypes.number,
+  iconColor: PropTypes.string,
 };
 
 Button.defaultProps = {
