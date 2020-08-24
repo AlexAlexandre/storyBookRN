@@ -6,7 +6,7 @@ import TextStyled from '../TextStyled';
 import * as theme from '~/theme';
 import Icon from '../Icon';
 
-const Button = ({loading, title, ...rest}) => {
+const Button = ({loading, ...rest}) => {
   const {
     solid,
     outline,
@@ -18,6 +18,7 @@ const Button = ({loading, title, ...rest}) => {
     iconRight,
     iconSize,
     iconColor,
+    children,
     style,
   } = rest;
 
@@ -49,7 +50,7 @@ const Button = ({loading, title, ...rest}) => {
             <Icon name={icon} size={iconSize} color={theme.colors.white} />
           )}
 
-          {(!fab, !icon && <TextStyled>{title}</TextStyled>)}
+          {(!fab, !icon && children)}
 
           {iconRight && (
             <Icon
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
 
 Button.prototype = {
   loading: PropTypes.bool,
-  title: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
   outline: PropTypes.bool,
   solid: PropTypes.bool,
   text: PropTypes.bool,

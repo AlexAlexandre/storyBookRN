@@ -7,6 +7,7 @@ import {Container} from './styles';
 
 import * as theme from '~/theme';
 import TextStyled from '../../components/TextStyled';
+import Icon from '../../components/Icon';
 
 const ButtonsScreen = ({navigation}) => {
   return (
@@ -15,27 +16,42 @@ const ButtonsScreen = ({navigation}) => {
 
       <View style={{alignItems: 'center'}}>
         <Button loading={true} solid />
-        <Button title="Botão solido" solid />
-        <Button title="Botão outline" outline />
-        <Button title="Botão com borda" rounded solid />
-        <Button title="Botão com borda" rounded outline />
-        <Button title="Botão text" text />
+
+        <Button solid>
+          <TextStyled white>Botão solido</TextStyled>
+        </Button>
+
+        <Button outline>
+          <TextStyled>Botão outline</TextStyled>
+        </Button>
+
+        <Button rounded solid>
+          <TextStyled>Botão com borda</TextStyled>
+        </Button>
+
+        <Button rounded outline>
+          <TextStyled>Botão com borda</TextStyled>
+        </Button>
+
+        <Button text>
+          <TextStyled>Botão apenas de text</TextStyled>
+        </Button>
 
         <Button
-          title="Icone na esquerda"
           outline
           iconLeft="thumb-up-outline"
           iconSize={28}
-          iconColor={theme.colors.primary}
-        />
+          iconColor={theme.colors.primary}>
+          <TextStyled>Icone na esquerda</TextStyled>
+        </Button>
 
         <Button
-          title="Icone na direita"
           outline
           iconRight="thumb-up-outline"
           iconSize={28}
-          iconColor={theme.colors.primary}
-        />
+          iconColor={theme.colors.primary}>
+          <TextStyled>Icone na direita</TextStyled>
+        </Button>
 
         <Button fab icon="account-outline" iconSize={40} />
       </View>
