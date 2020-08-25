@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {ActivityIndicator, TouchableOpacity, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -14,11 +14,12 @@ const Button = ({loading, ...rest}) => {
     icon,
     iconLeft,
     iconRight,
+    size,
     children,
     style,
   } = rest;
 
-  const buttonStyles = [
+  const styleButton = [
     solid && [styles.container, styles.solid],
     outline && [styles.container, styles.outline],
     text && [styles.container, styles.text],
@@ -27,8 +28,31 @@ const Button = ({loading, ...rest}) => {
     style,
   ];
 
+  console.log('fab');
+  console.log(fab);
+
+  let styleSize;
+  switch (size) {
+    case 'small':
+      styleSize = styles.smallSize;
+      break;
+    case 'medium':
+      styleSize = styles.mediumSize;
+      break;
+    case 'large':
+      styleSize = styles.largeSize;
+      break;
+    case 'x-large':
+      console.log('x-large');
+      styleSize = styles.xLargeSize;
+      break;
+    default:
+      styleSize = styles.mediumSize;
+      break;
+  }
+
   return (
-    <TouchableOpacity style={buttonStyles}>
+    <TouchableOpacity style={[styleButton, styleSize]}>
       {loading ? (
         <ActivityIndicator size="small" color="#E3F2FD" />
       ) : (
@@ -48,8 +72,6 @@ const Button = ({loading, ...rest}) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '90%',
-    height: 46,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -77,6 +99,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  smallSize: {
+    height: 30,
+    width: '20%',
+  },
+  mediumSize: {
+    height: 40,
+    width: '40%',
+  },
+  largeSize: {
+    height: 56,
+    width: '60%',
+  },
+  xLargeSize: {
+    height: 50,
+    width: '90%',
+  },
 });
 
 Button.prototype = {
@@ -90,10 +128,12 @@ Button.prototype = {
   icon: PropTypes.object,
   iconLeft: PropTypes.bool,
   iconRight: PropTypes.bool,
+  size: PropTypes.string,
 };
 
 Button.defaultProps = {
   loading: false,
+  size: 'medium',
 };
 
 export default Button;

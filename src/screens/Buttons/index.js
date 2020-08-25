@@ -15,21 +15,21 @@ const ButtonsScreen = ({navigation}) => {
       <Header navigation={navigation} route="HomeScreen" title="Botões" />
 
       <View style={{alignItems: 'center'}}>
-        <Button loading={true} solid />
+        <Button loading={true} solid size="x-large" />
 
-        <Button solid>
+        <Button solid size="x-large">
           <TextStyled white>Botão solido</TextStyled>
         </Button>
 
-        <Button outline>
+        <Button outline size="x-large">
           <TextStyled>Botão outline</TextStyled>
         </Button>
 
-        <Button rounded solid>
+        <Button rounded solid size="x-large">
           <TextStyled white>Botão com borda</TextStyled>
         </Button>
 
-        <Button rounded outline>
+        <Button rounded outline size="x-large">
           <TextStyled>Botão com borda</TextStyled>
         </Button>
 
@@ -37,33 +37,42 @@ const ButtonsScreen = ({navigation}) => {
           <TextStyled>Botão apenas de text</TextStyled>
         </Button>
 
-        <Button
-          outline
-          iconLeft
-          icon={
-            <Icon
-              name="thumb-up-outline"
-              size={28}
-              color={theme.colors.primary}
-              style={{marginRight: 8}}
-            />
-          }>
-          <TextStyled>Icone na esquerda</TextStyled>
-        </Button>
+        <View
+          style={{
+            width: '100%',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            marginTop: 10,
+          }}>
+          <Button
+            outline
+            iconLeft
+            icon={
+              <Icon
+                name="thumb-up-outline"
+                size={28}
+                color={theme.colors.primary}
+                style={{marginRight: 8}}
+              />
+            }>
+            <TextStyled>Icone na esquerda</TextStyled>
+          </Button>
 
-        <Button
-          solid
-          iconRight
-          icon={
-            <Icon
-              name="thumb-up-outline"
-              size={28}
-              color={theme.colors.white}
-              style={{marginLeft: 8}}
-            />
-          }>
-          <TextStyled white>Icone na direita</TextStyled>
-        </Button>
+          <Button
+            solid
+            iconRight
+            icon={
+              <Icon
+                name="thumb-up-outline"
+                size={28}
+                color={theme.colors.white}
+                style={{marginLeft: 8}}
+              />
+            }>
+            <TextStyled white>Icone na direita</TextStyled>
+          </Button>
+        </View>
 
         <View
           style={{
@@ -90,6 +99,30 @@ const ButtonsScreen = ({navigation}) => {
             }
           />
         </View>
+
+        <Button solid size="small">
+          <TextStyled white title>
+            small
+          </TextStyled>
+        </Button>
+
+        <Button solid size="medium">
+          <TextStyled white title>
+            medium
+          </TextStyled>
+        </Button>
+
+        <Button solid size="large">
+          <TextStyled white title>
+            large
+          </TextStyled>
+        </Button>
+
+        <Button solid size="x-large">
+          <TextStyled white title>
+            X-large
+          </TextStyled>
+        </Button>
       </View>
     </Container>
   );
