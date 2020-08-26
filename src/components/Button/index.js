@@ -17,6 +17,7 @@ const Button = ({loading, ...rest}) => {
     size,
     color,
     children,
+    onPress,
     style,
   } = rest;
 
@@ -31,7 +32,7 @@ const Button = ({loading, ...rest}) => {
     case 'large':
       styleSize = styles.largeSize;
       break;
-    case 'x-large':
+    case 'xlarge':
       styleSize = styles.xLargeSize;
       break;
     default:
@@ -49,7 +50,7 @@ const Button = ({loading, ...rest}) => {
   ];
 
   return (
-    <TouchableOpacity style={styleButton} {...rest}>
+    <TouchableOpacity style={styleButton} onPress={onPress}>
       {loading ? (
         <ActivityIndicator size="small" color="#E3F2FD" />
       ) : (
@@ -72,7 +73,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 10,
   },
   solid: (color) => ({
     backgroundColor: color,
@@ -125,8 +125,9 @@ Button.prototype = {
   icon: PropTypes.object,
   iconLeft: PropTypes.bool,
   iconRight: PropTypes.bool,
-  size: PropTypes.string,
+  size: PropTypes.oneOf(['small', 'medium', 'large', 'xlarge']),
   color: PropTypes.string.isRequired,
+  onPress: PropTypes.func,
 };
 
 Button.defaultProps = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Alert} from 'react-native';
 
 import Button from '~/components/Button';
 import TextStyled from '~/components/TextStyled';
@@ -19,27 +19,49 @@ const ButtonsScreen = ({navigation}) => {
         <Button
           loading={true}
           solid
-          size="x-large"
+          size="xlarge"
           color={theme.colors.primary}
+          style={{marginTop: 10}}
         />
 
-        <Button solid size="x-large" color={theme.colors.primary}>
+        <Button
+          solid
+          size="xlarge"
+          color={theme.colors.primary}
+          style={{marginTop: 10}}
+          onPress={() => {
+            Alert.alert('teste');
+          }}>
           <TextStyled white>Botão solido</TextStyled>
         </Button>
 
-        <Button outline size="x-large" color={theme.colors.primary}>
+        <Button
+          outline
+          size="xlarge"
+          color={theme.colors.primary}
+          style={{marginTop: 10}}>
           <TextStyled>Botão outline</TextStyled>
         </Button>
 
-        <Button rounded solid size="x-large" color={theme.colors.secondary}>
+        <Button
+          rounded
+          solid
+          size="xlarge"
+          color={theme.colors.secondary}
+          style={{marginTop: 10}}>
           <TextStyled white>Botão com borda</TextStyled>
         </Button>
 
-        <Button rounded outline size="x-large" color={theme.colors.secondary}>
+        <Button
+          rounded
+          outline
+          size="xlarge"
+          color={theme.colors.secondary}
+          style={{marginTop: 10}}>
           <TextStyled>Botão com borda</TextStyled>
         </Button>
 
-        <Button text>
+        <Button text style={{marginTop: 10}}>
           <TextStyled>Botão apenas de text</TextStyled>
         </Button>
 
@@ -110,25 +132,41 @@ const ButtonsScreen = ({navigation}) => {
           />
         </View>
 
-        <Button solid size="small" color={theme.colors.primary}>
+        <Button
+          solid
+          size="small"
+          color={theme.colors.primary}
+          style={{marginTop: 10}}>
           <TextStyled white title>
             small
           </TextStyled>
         </Button>
 
-        <Button solid size="medium" color={theme.colors.primary}>
+        <Button
+          solid
+          size="medium"
+          color={theme.colors.primary}
+          style={{marginTop: 10}}>
           <TextStyled white title>
             medium
           </TextStyled>
         </Button>
 
-        <Button solid size="large" color={theme.colors.primary}>
+        <Button
+          solid
+          size="large"
+          color={theme.colors.primary}
+          style={{marginTop: 10}}>
           <TextStyled white title>
             large
           </TextStyled>
         </Button>
 
-        <Button solid size="x-large" color={theme.colors.primary}>
+        <Button
+          solid
+          size="xlarge"
+          color={theme.colors.primary}
+          style={{marginTop: 10}}>
           <TextStyled white title>
             X-large
           </TextStyled>
