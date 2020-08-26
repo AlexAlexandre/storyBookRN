@@ -92,6 +92,7 @@ const ButtonsScreen = ({navigation}) => {
           }}>
           <Button
             fab
+            size="small"
             color={theme.colors.primary}
             icon={
               <Icon

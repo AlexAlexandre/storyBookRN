@@ -2,7 +2,7 @@ import React from 'react';
 import {ActivityIndicator, TouchableOpacity, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 
-import * as theme from '~/theme';
+import {calculateScreenPercent} from '~/helper/getDimensionsScreen';
 
 const Button = ({loading, ...rest}) => {
   const {
@@ -19,15 +19,6 @@ const Button = ({loading, ...rest}) => {
     children,
     style,
   } = rest;
-
-  const styleButton = [
-    solid && [styles.container, styles.solid(color)],
-    outline && [styles.container, styles.outline(color)],
-    text && [styles.container, styles.text],
-    rounded && [styles.container, styles.rounded],
-    fab && [styles.fab(color)],
-    style,
-  ];
 
   let styleSize;
   switch (size) {
@@ -48,8 +39,17 @@ const Button = ({loading, ...rest}) => {
       break;
   }
 
+  const styleButton = [
+    solid && [styles.container, styles.solid(color), styleSize],
+    outline && [styles.container, styles.outline(color), styleSize],
+    text && [styles.container, styles.text, styleSize],
+    rounded && [styles.container, styles.rounded, styleSize],
+    fab && [styles.fab(color)],
+    style,
+  ];
+
   return (
-    <TouchableOpacity style={[styleButton, styleSize]}>
+    <TouchableOpacity style={styleButton}>
       {loading ? (
         <ActivityIndicator size="small" color="#E3F2FD" />
       ) : (
@@ -90,27 +90,27 @@ const styles = StyleSheet.create({
   },
   fab: (color) => ({
     backgroundColor: color,
-    borderRadius: 30,
-    height: 46,
-    width: 46,
+    borderRadius: 50,
+    height: 50,
+    width: 50,
     alignItems: 'center',
     justifyContent: 'center',
   }),
   smallSize: {
     height: 30,
-    width: '20%',
+    width: calculateScreenPercent(20, 'width'),
   },
   mediumSize: {
     height: 40,
-    width: '40%',
+    width: calculateScreenPercent(40, 'width'),
   },
   largeSize: {
     height: 56,
-    width: '60%',
+    width: calculateScreenPercent(60, 'width'),
   },
   xLargeSize: {
     height: 50,
-    width: '90%',
+    width: calculateScreenPercent(90, 'width'),
   },
 });
 
