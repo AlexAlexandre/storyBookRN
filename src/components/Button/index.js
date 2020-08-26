@@ -49,7 +49,7 @@ const Button = ({loading, ...rest}) => {
   ];
 
   return (
-    <TouchableOpacity style={styleButton}>
+    <TouchableOpacity style={styleButton} {...rest}>
       {loading ? (
         <ActivityIndicator size="small" color="#E3F2FD" />
       ) : (
