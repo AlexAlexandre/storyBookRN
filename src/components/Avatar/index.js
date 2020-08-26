@@ -13,18 +13,24 @@ const availableSizes = {
 
 export default function Avatar({source, ...rest}) {
   const img = source ? source : userAvatar;
-  const {size} = rest;
+  const {size, rounded, style} = rest;
   const avatarSize = typeof size === 'number' ? size : availableSizes[size];
+  const styleAvatar = [rounded && [styles.rounded(avatarSize)], style];
 
-  return <Image source={img} style={styles.container(avatarSize)} />;
+  return (
+    <Image source={img} style={[styles.container(avatarSize), styleAvatar]} />
+  );
 }
 
 const styles = StyleSheet.create({
   container: (avatarSize) => ({
-    borderRadius: avatarSize / 2,
+    borderRadius: 8,
     resizeMode: 'contain',
     height: avatarSize,
     width: avatarSize,
+  }),
+  rounded: (avatarSize) => ({
+    borderRadius: avatarSize / 2,
   }),
 });
 
@@ -34,6 +40,7 @@ Avatar.propTypes = {
     PropTypes.oneOf(['small', 'medium', 'large', 'xlarge']),
     PropTypes.number,
   ]),
+  rounded: PropTypes.bool,
 };
 
 Avatar.defaultProps = {

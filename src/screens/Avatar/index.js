@@ -15,6 +15,10 @@ const AvatarScreen = ({navigation}) => {
         Tamanhos
       </TextStyled>
 
+      <TextStyled h3 light>
+        originais
+      </TextStyled>
+
       <View
         style={{
           flexDirection: 'row',
@@ -26,7 +30,7 @@ const AvatarScreen = ({navigation}) => {
         </View>
 
         <View style={{alignItems: 'center', margin: 10}}>
-          <Avatar size="medium" />
+          <Avatar size="medium" rounded />
           <TextStyled>medium</TextStyled>
         </View>
       </View>
@@ -37,7 +41,7 @@ const AvatarScreen = ({navigation}) => {
           alignItems: 'center',
         }}>
         <View style={{alignItems: 'center', margin: 10}}>
-          <Avatar size="large" />
+          <Avatar size="large" rounded />
           <TextStyled>large</TextStyled>
         </View>
 
