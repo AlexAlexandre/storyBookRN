@@ -2,12 +2,13 @@ import React from 'react';
 import {View} from 'react-native';
 
 import Button from '~/components/Button';
-import Header from '../Header';
-import {Container} from './styles';
+import TextStyled from '~/components/TextStyled';
+import Icon from '~/components/Icon';
 
+import Header from '../Header';
 import * as theme from '~/theme';
-import TextStyled from '../../components/TextStyled';
-import Icon from '../../components/Icon';
+
+import {Container} from './styles';
 
 const ButtonsScreen = ({navigation}) => {
   return (
@@ -15,21 +16,26 @@ const ButtonsScreen = ({navigation}) => {
       <Header navigation={navigation} route="HomeScreen" title="Botões" />
 
       <View style={{alignItems: 'center'}}>
-        <Button loading={true} solid size="x-large" />
+        <Button
+          loading={true}
+          solid
+          size="x-large"
+          color={theme.colors.primary}
+        />
 
-        <Button solid size="x-large">
+        <Button solid size="x-large" color={theme.colors.primary}>
           <TextStyled white>Botão solido</TextStyled>
         </Button>
 
-        <Button outline size="x-large">
+        <Button outline size="x-large" color={theme.colors.primary}>
           <TextStyled>Botão outline</TextStyled>
         </Button>
 
-        <Button rounded solid size="x-large">
+        <Button rounded solid size="x-large" color={theme.colors.secondary}>
           <TextStyled white>Botão com borda</TextStyled>
         </Button>
 
-        <Button rounded outline size="x-large">
+        <Button rounded outline size="x-large" color={theme.colors.secondary}>
           <TextStyled>Botão com borda</TextStyled>
         </Button>
 
@@ -47,6 +53,7 @@ const ButtonsScreen = ({navigation}) => {
           }}>
           <Button
             outline
+            color={theme.colors.primary}
             iconLeft
             icon={
               <Icon
@@ -61,6 +68,7 @@ const ButtonsScreen = ({navigation}) => {
 
           <Button
             solid
+            color={theme.colors.primary}
             iconRight
             icon={
               <Icon
@@ -84,6 +92,7 @@ const ButtonsScreen = ({navigation}) => {
           }}>
           <Button
             fab
+            color={theme.colors.primary}
             icon={
               <Icon
                 name="account-outline"
@@ -100,25 +109,25 @@ const ButtonsScreen = ({navigation}) => {
           />
         </View>
 
-        <Button solid size="small">
+        <Button solid size="small" color={theme.colors.primary}>
           <TextStyled white title>
             small
           </TextStyled>
         </Button>
 
-        <Button solid size="medium">
+        <Button solid size="medium" color={theme.colors.primary}>
           <TextStyled white title>
             medium
           </TextStyled>
         </Button>
 
-        <Button solid size="large">
+        <Button solid size="large" color={theme.colors.primary}>
           <TextStyled white title>
             large
           </TextStyled>
         </Button>
 
-        <Button solid size="x-large">
+        <Button solid size="x-large" color={theme.colors.primary}>
           <TextStyled white title>
             X-large
           </TextStyled>

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {ActivityIndicator, TouchableOpacity, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -15,21 +15,19 @@ const Button = ({loading, ...rest}) => {
     iconLeft,
     iconRight,
     size,
+    color,
     children,
     style,
   } = rest;
 
   const styleButton = [
-    solid && [styles.container, styles.solid],
-    outline && [styles.container, styles.outline],
+    solid && [styles.container, styles.solid(color)],
+    outline && [styles.container, styles.outline(color)],
     text && [styles.container, styles.text],
     rounded && [styles.container, styles.rounded],
-    fab && [styles.fab],
+    fab && [styles.fab(color)],
     style,
   ];
-
-  console.log('fab');
-  console.log(fab);
 
   let styleSize;
   switch (size) {
@@ -43,7 +41,6 @@ const Button = ({loading, ...rest}) => {
       styleSize = styles.largeSize;
       break;
     case 'x-large':
-      console.log('x-large');
       styleSize = styles.xLargeSize;
       break;
     default:
@@ -77,28 +74,28 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     margin: 10,
   },
-  solid: {
-    backgroundColor: theme.colors.primary,
-  },
-  outline: {
+  solid: (color) => ({
+    backgroundColor: color,
+  }),
+  outline: (color) => ({
     backgroundColor: 'transparent',
-    borderColor: theme.colors.primary,
+    borderColor: color,
     borderWidth: 1.5,
-  },
+  }),
   text: {
     backgroundColor: 'transparent',
   },
   rounded: {
     borderRadius: 30,
   },
-  fab: {
-    backgroundColor: theme.colors.primary,
+  fab: (color) => ({
+    backgroundColor: color,
     borderRadius: 30,
     height: 46,
     width: 46,
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }),
   smallSize: {
     height: 30,
     width: '20%',
@@ -129,6 +126,7 @@ Button.prototype = {
   iconLeft: PropTypes.bool,
   iconRight: PropTypes.bool,
   size: PropTypes.string,
+  color: PropTypes.string.isRequired,
 };
 
 Button.defaultProps = {
