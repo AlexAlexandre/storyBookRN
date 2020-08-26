@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, Image} from 'react-native';
+import {StyleSheet, TouchableOpacity, Image} from 'react-native';
 
 import userAvatar from '~/assets/default-avatar-60.png';
+import {PropsType} from 'react-native/ReactCommon/hermes/inspector/tools/msggen/src/Type';
 
 const availableSizes = {
   small: 50,
@@ -13,12 +14,27 @@ const availableSizes = {
 
 export default function Avatar({source, ...rest}) {
   const img = source ? source : userAvatar;
-  const {size, rounded, style} = rest;
+  const {size, rounded, onPress, onLongPress, style} = rest;
+
   const avatarSize = typeof size === 'number' ? size : availableSizes[size];
   const styleAvatar = [rounded && [styles.rounded(avatarSize)], style];
 
   return (
-    <Image source={img} style={[styles.container(avatarSize), styleAvatar]} />
+    <>
+      {onPress || onLongPress ? (
+        <TouchableOpacity onPress={onPress} onLongPress={onLongPress}>
+          <Image
+            source={img}
+            style={[styles.container(avatarSize), styleAvatar]}
+          />
+        </TouchableOpacity>
+      ) : (
+        <Image
+          source={img}
+          style={[styles.container(avatarSize), styleAvatar]}
+        />
+      )}
+    </>
   );
 }
 
@@ -41,6 +57,8 @@ Avatar.propTypes = {
     PropTypes.number,
   ]),
   rounded: PropTypes.bool,
+  onPress: PropTypes.func,
+  onLongPress: PropTypes.func,
 };
 
 Avatar.defaultProps = {

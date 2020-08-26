@@ -1,10 +1,10 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Alert} from 'react-native';
 
 import {Container} from './styles';
 import Header from '../Header';
 import Avatar from '~/components/Avatar';
-import TextStyled from '../../components/TextStyled';
+import TextStyled from '~/components/TextStyled';
 
 const AvatarScreen = ({navigation}) => {
   return (
@@ -41,12 +41,23 @@ const AvatarScreen = ({navigation}) => {
           alignItems: 'center',
         }}>
         <View style={{alignItems: 'center', margin: 10}}>
-          <Avatar size="large" rounded />
+          <Avatar
+            size="large"
+            rounded
+            onLongPress={() => {
+              Alert.alert('teste clique longo');
+            }}
+          />
           <TextStyled>large</TextStyled>
         </View>
 
         <View style={{alignItems: 'center', margin: 10}}>
-          <Avatar size="xlarge" />
+          <Avatar
+            size="xlarge"
+            onPress={() => {
+              navigation.navigate('HomeScreen');
+            }}
+          />
           <TextStyled>xlarge</TextStyled>
         </View>
       </View>
