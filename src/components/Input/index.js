@@ -4,15 +4,20 @@ import {StyleSheet, View, TextInput} from 'react-native';
 
 import * as theme from '~/theme';
 
-function Input({icon, ...rest}, ref) {
+function Input({style, ...rest}, ref) {
+  const {leftIcon, rightIcon} = rest;
+  const styleInput = [style, styles.container];
+
   return (
-    <View style={styles.container}>
+    <View style={styleInput}>
+      {leftIcon && leftIcon}
       <TextInput
         style={styles.input}
         placeholderTextColor={theme.colors.black}
         ref={ref}
         {...rest}
       />
+      {rightIcon && rightIcon}
     </View>
   );
 }
@@ -35,7 +40,8 @@ const styles = StyleSheet.create({
 });
 
 Input.PropTypes = {
-  icon: PropTypes.string,
+  iconLeft: PropTypes.object,
+  iconRight: PropTypes.object,
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
