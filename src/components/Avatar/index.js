@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import {StyleSheet, TouchableOpacity, Image} from 'react-native';
 
 import userAvatar from '~/assets/default-avatar-60.png';
-import {PropsType} from 'react-native/ReactCommon/hermes/inspector/tools/msggen/src/Type';
 
 const availableSizes = {
   small: 50,

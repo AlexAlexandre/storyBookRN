@@ -1,10 +1,11 @@
 import React from 'react';
 import {View, Alert} from 'react-native';
 
-import {Container} from './styles';
 import Header from '../Header';
 import Avatar from '~/components/Avatar';
 import TextStyled from '~/components/TextStyled';
+
+import {Container} from './styles';
 
 const AvatarScreen = ({navigation}) => {
   return (
@@ -13,10 +14,6 @@ const AvatarScreen = ({navigation}) => {
 
       <TextStyled h2 light>
         Tamanhos
-      </TextStyled>
-
-      <TextStyled h3 light>
-        originais
       </TextStyled>
 
       <View
