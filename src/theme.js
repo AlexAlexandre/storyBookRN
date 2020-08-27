@@ -6,7 +6,7 @@ const colors = {
   auxiliary: '#758EB7',
   black: '#000000',
   white: '#FFFFFF',
-  gray: '#D9D2D2',
+  gray: '#EEEEEE',
   gray2: '#F6F5F5',
   blueLight: '#0295CE',
   disabled: '#808080',
