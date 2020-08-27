@@ -9,6 +9,7 @@ import {Container, FromContainer} from './styles';
 
 import ButtonsScreen from '../Buttons';
 import AvatarScreen from '../Avatar';
+import InputScreen from '../Input';
 
 const Stack = createStackNavigator();
 
@@ -34,6 +35,9 @@ const HomeScreen = ({navigation}) => {
       id: '3',
       title: 'Input',
       iconRight: 'default',
+      onPress: () => {
+        navigation.navigate('InputScreen');
+      },
     },
     {
       id: '4',
@@ -82,6 +86,7 @@ export default function Home() {
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="ButtonsScreen" component={ButtonsScreen} />
         <Stack.Screen name="AvatarScreen" component={AvatarScreen} />
+        <Stack.Screen name="InputScreen" component={InputScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
